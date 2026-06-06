@@ -24,3 +24,8 @@ Powered by the **Jikan API v4** (MyAnimeList unofficial API).
   - **Characters & Cast**: Renders cast profiles with photos and voice actor details.
   - **Similar Anime**: Recommendations row (click-to-swap content).
 - **Performance Caching**: Caches details, cast, and recommendations in memory to bypass rate-limiting and make loading instant.
+
+
+ https://bharath496.github.io/Animekin/
+ visit and know about it 
+ 
