@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animekin. — Discover Your Next Obsession</title>
+  <meta name="description" content="Animekin. – Explore anime, search by genres, check ratings, original posters, trailers, voice cast, dubbed & subbed language info. Powered by Jikan API.">
+  <meta name="theme-color" content="#03060f">
+  <link rel="icon" type="image/png" href="/assets/animekin_logo_emblem-vbpmm6xM.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script type="module" crossorigin src="/assets/index-DgMtnrBU.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CRpRudPv.css">
+</head>
+<body>
+
+  <!-- Decorative background orbs -->
+  <div class="bg-canvas">
+    <div class="blur-orb orb-1"></div>
+    <div class="blur-orb orb-2"></div>
+    <div class="blur-orb orb-3"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="app-header" id="app-header">
+    <div class="container header-container">
+      <a href="#" class="logo" id="logo-btn">
+        <div class="logo-icon-wrap">
+          <span class="logo-clover">♣</span>
+        </div>
+        <span class="logo-text"><span class="logo-accent">Anime</span>kin<span class="logo-dot">.</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#" class="nav-link active" data-filter="all">All Anime</a>
+        <a href="#" class="nav-link" data-filter="tv">TV Shows</a>
+        <a href="#" class="nav-link" data-filter="movie">Movies</a>
+        <a href="#" class="nav-link" data-filter="ova">OVAs</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com" target="_blank" class="icon-btn" aria-label="GitHub">
+          <i data-lucide="github"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-section" id="hero-banner">
+    <div class="hero-bg" id="hero-bg-img"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="hero-tagline"><i data-lucide="sparkles"></i> Spotlight</span>
+        <h1 class="hero-title" id="hero-title">Loading Featured Anime...</h1>
+        <div class="hero-meta">
+          <span class="meta-item rating"><i data-lucide="star"></i><span id="hero-rating">—</span></span>
+          <span class="meta-item"><i data-lucide="film"></i><span id="hero-type">—</span></span>
+          <span class="meta-item"><i data-lucide="calendar"></i><span id="hero-year">—</span></span>
+        </div>
+        <p class="hero-synopsis" id="hero-synopsis">Explore the vast world of anime — filter by genre, watch trailers, browse voice casts, and discover your next obsession.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="hero-details-btn"><i data-lucide="info"></i> View Details</button>
+          <button class="btn btn-secondary" id="hero-trailer-btn"><i data-lucide="play"></i> Watch Trailer</button>
+        </div>
+      </div>
+      <div class="hero-cover-wrapper" id="hero-cover-wrapper">
+        <img src="" alt="Featured Anime" class="hero-cover" id="hero-cover-img">
+        <div class="hero-cover-glow" id="hero-cover-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main class="main container">
+
+    <!-- Search & Filters -->
+    <div class="filter-panel">
+      <div class="search-row">
+        <div class="search-box">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="search-input" placeholder="Search anime... (One Piece, Black Clover, Naruto...)" autocomplete="off">
+          <button id="search-clear-btn" class="clear-btn hide" aria-label="Clear">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="filter-group">
+          <div class="select-wrapper">
+            <select id="sort-select">
+              <option value="popularity">Popularity</option>
+              <option value="score">Top Rated</option>
+              <option value="title">A–Z</option>
+            </select>
+            <i data-lucide="chevron-down" class="select-chevron"></i>
+          </div>
+          <div class="select-wrapper">
+            <select id="type-select">
+              <option value="">All Types</option>
+              <option value="tv">TV Series</option>
+              <option value="movie">Movies</option>
+              <option value="ova">OVAs</option>
+              <option value="special">Specials</option>
+            </select>
+            <i data-lucide="chevron-down" class="select-chevron"></i>
+          </div>
+        </div>
+      </div>
+      <div class="genre-section">
+        <p class="genre-section-title">Filter by Genre</p>
+        <div class="genre-list-container">
+          <div class="genre-list" id="genre-container">
+            <span class="genre-tag loading-placeholder"></span>
+            <span class="genre-tag loading-placeholder"></span>
+            <span class="genre-tag loading-placeholder"></span>
+            <span class="genre-tag loading-placeholder"></span>
+            <span class="genre-tag loading-placeholder"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Filters -->
+    <div class="active-filters-bar hide" id="active-filters-bar">
+      <span class="active-filters-label">Filters:</span>
+      <div class="active-filters-list" id="active-filters-list"></div>
+      <button class="clear-all-filters-btn" id="clear-all-filters-btn">Clear All</button>
+    </div>
+
+    <!-- Grid -->
+    <section class="grid-section">
+      <div class="section-header">
+        <h2 class="section-title" id="grid-title">Popular Anime</h2>
+        <span class="results-count" id="results-count"></span>
+      </div>
+      <div class="anime-grid" id="anime-grid">
+        <div class="skeleton-card"></div><div class="skeleton-card"></div>
+        <div class="skeleton-card"></div><div class="skeleton-card"></div>
+        <div class="skeleton-card"></div><div class="skeleton-card"></div>
+        <div class="skeleton-card"></div><div class="skeleton-card"></div>
+      </div>
+      <div class="pagination-container hide" id="pagination-container">
+        <button class="btn btn-secondary" id="load-more-btn"><span>Load More</span><i data-lucide="chevron-down"></i></button>
+      </div>
+      <div class="no-results hide" id="no-results-state">
+        <i data-lucide="search-code" class="no-results-icon"></i>
+        <h3>No Anime Found</h3>
+        <p>Try different keywords or adjust your filters.</p>
+        <button class="btn btn-primary" id="reset-search-btn">Reset Search</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <dialog class="detail-dialog" id="detail-modal">
+    <div class="modal-wrapper">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close"><i data-lucide="x"></i></button>
+      <div class="modal-body">
+
+        <!-- Sidebar -->
+        <aside class="modal-sidebar">
+          <div class="poster-container">
+            <img src="" alt="Poster" class="modal-poster" id="modal-poster">
+            <div class="poster-glow" id="poster-glow"></div>
+          </div>
+          <div class="quick-stats-grid">
+            <div class="stat-card score">
+              <span class="stat-label">Score</span>
+              <span class="stat-val" id="modal-score">—</span>
+              <span class="stat-sub" id="modal-scored-by">— users</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Rank</span>
+              <span class="stat-val" id="modal-rank">—</span>
+              <span class="stat-sub">Pop. <span id="modal-pop">—</span></span>
+            </div>
+          </div>
+          <div class="metadata-list">
+            <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value" id="modal-format">—</span></div>
+            <div class="meta-row"><span class="meta-label">Episodes</span><span class="meta-value" id="modal-episodes">—</span></div>
+            <div class="meta-row"><span class="meta-label">Status</span><span class="meta-value" id="modal-status">—</span></div>
+            <div class="meta-row"><span class="meta-label">Aired</span><span class="meta-value" id="modal-aired">—</span></div>
+            <div class="meta-row"><span class="meta-label">Studio</span><span class="meta-value" id="modal-studio">—</span></div>
+            <div class="meta-row"><span class="meta-label">Source</span><span class="meta-value" id="modal-source">—</span></div>
+            <div class="meta-row"><span class="meta-label">OG Lang</span><span class="meta-value" id="modal-og-lang">Japanese</span></div>
+            <div class="meta-row"><span class="meta-label">Dubbed In</span><span class="meta-value" id="modal-dub-langs">—</span></div>
+          </div>
+        </aside>
+
+        <!-- Content -->
+        <div class="modal-content">
+          <h2 class="modal-title" id="modal-title-en">—</h2>
+          <p class="modal-subtitle-jp" id="modal-title-jp"></p>
+          <div class="modal-meta-row">
+            <span class="rating-badge" id="modal-rating-badge">—</span>
+            <div class="modal-genres" id="modal-genres-container"></div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="modal-tabs">
+            <button class="tab-btn active" data-tab="tab-trailer" id="tab-btn-trailer">Trailer</button>
+            <button class="tab-btn" data-tab="tab-overview">Overview</button>
+            <button class="tab-btn" data-tab="tab-languages">Languages</button>
+            <button class="tab-btn" data-tab="tab-characters">Characters</button>
+            <button class="tab-btn" data-tab="tab-recommendations">Similar</button>
+          </div>
+
+          <div class="tab-panels">
+            <!-- Trailer -->
+            <div class="tab-panel active" id="tab-trailer">
+              <div class="video-container">
+                <div class="video-placeholder" id="trailer-placeholder">
+                  <i data-lucide="video-off" class="video-off-icon"></i>
+                  <p>No trailer available</p>
+                </div>
+                <iframe id="trailer-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+
+            <!-- Overview -->
+            <div class="tab-panel" id="tab-overview">
+              <h4 class="panel-section-title">Synopsis</h4>
+              <p class="modal-synopsis" id="modal-synopsis-text">—</p>
+              <div class="more-info-grid">
+                <div>
+                  <h4 class="panel-section-title">Producers</h4>
+                  <p class="muted-text" id="modal-producers">—</p>
+                </div>
+                <div>
+                  <h4 class="panel-section-title">Licensors</h4>
+                  <p class="muted-text" id="modal-licensors">—</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="tab-panel" id="tab-languages">
+              <div class="modal-lang-stat-row">
+                <div class="modal-lang-stat">
+                  <span class="modal-lang-stat-num" id="modal-dub-count">—</span>
+                  <span class="modal-lang-stat-label">Dubbed Languages</span>
+                </div>
+                <div class="modal-lang-stat">
+                  <span class="modal-lang-stat-num" id="modal-sub-count">—</span>
+                  <span class="modal-lang-stat-label">Subtitled Languages</span>
+                </div>
+              </div>
+              <div class="modal-lang-block">
+                <h4 class="panel-section-title og-title">Original Language (OG)</h4>
+                <div class="modal-lang-tags" id="modal-og-tags"><span class="lang-tag og-tag">Japanese</span></div>
+              </div>
+              <div class="modal-lang-block">
+                <h4 class="panel-section-title dub-title">Dubbed (DUB)</h4>
+                <div class="modal-lang-tags" id="modal-dub-tags"></div>
+              </div>
+              <div class="modal-lang-block">
+                <h4 class="panel-section-title sub-title">Subtitled (SUB)</h4>
+                <div class="modal-lang-tags" id="modal-sub-tags"></div>
+              </div>
+            </div>
+
+            <!-- Characters -->
+            <div class="tab-panel" id="tab-characters">
+              <div class="characters-grid" id="modal-characters-grid">
+                <div class="char-skeleton"></div><div class="char-skeleton"></div>
+                <div class="char-skeleton"></div><div class="char-skeleton"></div>
+              </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="tab-panel" id="tab-recommendations">
+              <div class="recommendations-row" id="modal-recommendations-row"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo"><span class="logo-accent">Anime</span>kin<span class="logo-dot">.</span></span>
+        <span class="footer-tagline">Powered by MyAnimeList &amp; Jikan API</span>
+      </div>
+      <p class="footer-note">Made for anime fans</p>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    const hdr = document.getElementById('app-header');
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>
