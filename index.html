@@ -4,24 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Animekin. — Discover Your Next Obsession</title>
-  <meta name="description" content="Animekin. – Explore anime, search by genres, check ratings, original posters, trailers, voice cast, dubbed & subbed language info.">
-  <meta name="theme-color" content="#0d0d24">
-  <link rel="icon" type="image/png" href="animekin_logo_emblem.png">
+  <meta name="description" content="Animekin. – Explore anime, search by genres, check ratings, original posters, trailers, voice cast, dubbed & subbed language info. Powered by Jikan API.">
+  <meta name="theme-color" content="#03060f">
+  <link rel="icon" type="image/png" href="/assets/animekin_logo_emblem-vbpmm6xM.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="style.css">
+  <script type="module" crossorigin src="/assets/index-DgMtnrBU.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CRpRudPv.css">
 </head>
 <body>
-
-  <!-- Background anime video — direct embed, cycles every 3 min -->
-  <div class="bg-video-wrap">
-    <iframe id="bg-video-player"
-      src="https://www.youtube.com/embed/s3zpfVQSKqI?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=s3zpfVQSKqI"
-      allow="autoplay; encrypted-media" frameborder="0"></iframe>
-    <div class="bg-video-overlay"></div>
-  </div>
 
   <!-- Decorative background orbs -->
   <div class="bg-canvas">
@@ -35,15 +28,7 @@
     <div class="container header-container">
       <a href="#" class="logo" id="logo-btn">
         <div class="logo-icon-wrap">
-          <svg class="logo-jolly" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="19" fill="#070b14" stroke="#3b82f6" stroke-width="1.5"/>
-            <path d="M20 6C16 6 13 9 13 13c0 2 .8 3.5 2 4.7-1.5 1-2.5 2.7-2.5 4.6 0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5c0-1.9-1-3.6-2.5-4.6 1.2-1.2 2-2.7 2-4.7 0-4-3-7-7-7z" fill="#fff"/>
-            <circle cx="17" cy="14" r="1.5" fill="#070b14"/>
-            <circle cx="23" cy="14" r="1.5" fill="#070b14"/>
-            <path d="M20 18l-2 3h4l-2-3z" fill="#070b14"/>
-            <path d="M20 3l-3 5h6l-3-5z" fill="#ef4444" opacity="0.9"/>
-            <path d="M14 5l2 4 1-2-3-2zM26 5l-2 4-1-2 3-2z" fill="#ef4444" opacity="0.7"/>
-          </svg>
+          <span class="logo-clover">♣</span>
         </div>
         <span class="logo-text"><span class="logo-accent">Anime</span>kin<span class="logo-dot">.</span></span>
       </a>
@@ -297,38 +282,18 @@
     <div class="container footer-content">
       <div class="footer-brand">
         <span class="footer-logo"><span class="logo-accent">Anime</span>kin<span class="logo-dot">.</span></span>
-        <span class="footer-tagline">Powered by AniList</span>
+        <span class="footer-tagline">Powered by MyAnimeList &amp; Jikan API</span>
       </div>
       <p class="footer-note">Made for anime fans</p>
     </div>
   </footer>
 
-  <script type="module" src="app.js"></script>
   <script>
     lucide.createIcons();
     const hdr = document.getElementById('app-header');
     window.addEventListener('scroll', () => {
       hdr.classList.toggle('scrolled', window.scrollY > 50);
     });
-
-    // Background video cycling — direct embed swap every 3 min
-    const BG_VIDEOS = [
-      's3zpfVQSKqI', // Vinland Saga - Thor's death 1080p
-      'eSN2VcMTvJ4', // One Piece - Luffy meets Zoro
-      '-pHfPJGatgE', // Your Name - climax (Sparkle AMV 6:50)
-      '9uRAzUogpL8', // Vinland Saga - Thor vs Askeladd (Thorfinn)
-      '1L1YcGGRu74', // One Piece - Luffy meets Zoro alt
-      'DRQ1KFVCV5k', // Your Name - AMV (2:23)
-      'wkpHTVm_VVk', // Vinland Saga - Thor's Death (alt)
-    ];
-
-    let bgIndex = 0;
-    const bgPlayer = document.getElementById('bg-video-player');
-    setInterval(() => {
-      bgIndex = (bgIndex + 1) % BG_VIDEOS.length;
-      bgPlayer.src = 'https://www.youtube.com/embed/' + BG_VIDEOS[bgIndex] +
-        '?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=' + BG_VIDEOS[bgIndex];
-    }, 180000);
   </script>
 </body>
 </html>
